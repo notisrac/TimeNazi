@@ -10,8 +10,10 @@
           var lines = data.split("\n");
 
           $.each(lines, function(n, elem) {
-            var parts = elem.split(', ');
-            $('#fillme').append('<a href="' + parts[0] + '" alt="">' + parts[0] + '</a>&nbsp;(md5: ' + parts[1] + ')<br />');
+            if(elem.length > 0){
+              var parts = elem.split(', ');
+              $('#fillme').append('<a href="' + parts[0] + '" alt="">' + parts[0] + '</a>&nbsp;(md5: ' + parts[1] + ')<br />');
+            }
           });
         }); 
       });
