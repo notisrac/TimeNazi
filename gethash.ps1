@@ -1,0 +1,1 @@
+Get-FileHash Background\*.* -Algorithm MD5 | % { Write-Host "$($_.Path), $($_.Hash)" } > files.list
