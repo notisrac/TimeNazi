@@ -28,7 +28,8 @@
         // get the releases
         $.get('https://api.github.com/repos/notisrac/TimeNazi/releases', function(data) {
           for(i = 0; i < data.length; i++){
-            var tmpTemplate = releasesTemplate;
+            var tmpTemplate = releasesTemplate.clone();
+            tmpTemplate.attr('id', 'release_' + data[i].id);
             tmpTemplate.children('#releasetitle').text(data[i].name);
             // user link
             tmpTemplate.find('#userLink').attr('href', data[i].author.html_url).html(function(){
@@ -53,9 +54,11 @@
             var downloadFileTemplate = downloadsContainer.find('#downloadFile');
             downloadFileTemplate.remove();
             for(j = 0; j < data[i].assets.length; j++){
-              var tmpDLTemplate = downloadFileTemplate;
+              var tmpDLTemplate = downloadFileTemplate.clone();
+              tmpDLTemplate.attr('id', 'release_' + data[i].id + '_' + 'asset_' + data[i].assets[j].id);
               // process
               tmpDLTemplate.find('a').attr('href', data[i].assets[j].browser_download_url);
+              tmpDLTemplate.find('a').attr('title', 'Downloaded ' + data[i].assets[j].download_count + ' time(s)');
               tmpDLTemplate.html(function(){
                 return $(this).html().replace('%DOWNLOADFILENAME%', data[i].assets[j].name).replace('%DOWNLOADFILESIZE%', Math.round((data[i].assets[j].size / 1024 / 1024) * 100) / 100);
               });
@@ -64,7 +67,7 @@
             }
             //console.log(postDate.text());
             // append to the container
-            releases.append(tmpTemplate);         
+            releases.append(tmpTemplate);
           }
         }); 
       });
