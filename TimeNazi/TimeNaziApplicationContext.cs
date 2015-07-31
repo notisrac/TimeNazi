@@ -61,6 +61,7 @@ namespace TimeNazi
         private ToolStripSeparator _tssSeparator;
         private ToolStripMenuItem _tsmiMenuItemShowClock;
         private ToolStripMenuItem _tsmiMenuItemEnable;
+        private ToolStripMenuItem _tsmiMenuItemAbout;
         private ConfigurationManager _cmConfigManager;
         private GoogleApiWrapper _gawGoogleWrapper = new GoogleApiWrapper();
         private ActivityLogManager _almActivityLogManager = new ActivityLogManager();
@@ -126,7 +127,7 @@ namespace TimeNazi
             }
         }
         private ScenarioOrchestrator _soOrchestrator;
-
+        private bool _bIsSessionEnded;
 
         public TimeNaziApplicationContext()
         {
@@ -153,9 +154,15 @@ namespace TimeNazi
 
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
             SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+            SystemEvents.SessionEnded += SystemEvents_SessionEnded;
 
             logger.Debug("Application start: scenario start");
             _scenarioStartup();
+        }
+
+        private void SystemEvents_SessionEnded(object sender, SessionEndedEventArgs e)
+        {
+            _bIsSessionEnded = true;
         }
 
         void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
@@ -231,6 +238,7 @@ namespace TimeNazi
             logger.Debug("disposing...");
             SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
             SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+            SystemEvents.SessionEnded -= SystemEvents_SessionEnded;
 
             switch (_soOrchestrator.CurrentState)
             {
@@ -489,15 +497,16 @@ namespace TimeNazi
             mainForm.Show();
         }
 
-        private static void _exit()
+        private void _exit()
         {
-            logger.Debug("exit");
 #if !DEBUG
             if (MessageBox.Show("Exit TimeNazi?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.OK)
             {
+                logger.Debug("exit: user request");
                 Application.Exit();
             }
 #else
+            logger.Debug("exit: user request");
             Application.Exit();
 #endif
         }
@@ -540,10 +549,12 @@ namespace TimeNazi
 
         void _soOrchestrator_RestElapsed(object sender, ElapsedEventArgs e)
         {
-            logger.Info(string.Format("rest period ended with {0}s, starting work period", e.ElapsedTime));
+            //logger.Info(string.Format("rest period ended with {0}s, starting work period", e.ElapsedTime));
+            logger.Info(string.Format("rest period ended with {0}s, waiting for user to click the resume work button, to start work period", e.ElapsedTime));
             _logActivity(ActivityType.RestEnd, e.ElapsedTime);
-            _logActivity(ActivityType.WorkBegin, 0);
-            _scenarioWorking();
+            mainForm.ScenarioRestEnd();
+            //_logActivity(ActivityType.WorkBegin, 0);
+            //_scenarioWorking();
         }
 
         void _mfMainForm_SnoozeClicked(object sender, EventArgs e)
@@ -580,6 +591,10 @@ namespace TimeNazi
 
         void Application_ApplicationExit(object sender, EventArgs e)
         {
+            if (_bIsSessionEnded)
+            { // shutdown or logoff event
+                logger.Debug("exit: shutdown or logoff event");
+            }
             _niTrayicon.Visible = false;
         }
 
@@ -653,11 +668,20 @@ namespace TimeNazi
             _tsmiMenuItemEnable.Text = "Enabled";
             _tsmiMenuItemEnable.CheckOnClick = true;
             _tsmiMenuItemEnable.Checked = true;
+            //
+            // MenuItemAbout
+            //
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            _tsmiMenuItemAbout = new ToolStripMenuItem();
+            _tsmiMenuItemAbout.Name = "MenuItemAbout";
+            _tsmiMenuItemAbout.Text = string.Format("{0} v{1}.{2}.{3}", versionInfo.ProductName, versionInfo.ProductMajorPart, versionInfo.ProductMinorPart, versionInfo.ProductBuildPart);
+            _tsmiMenuItemAbout.ToolTipText = string.Format("{0}, {1}", versionInfo.LegalCopyright, versionInfo.CompanyName);
+            _tsmiMenuItemAbout.Enabled = false;
 
             //
             // TrayIconContextMenu
             //
-            _cmsTrayIconContextMenu.Items.AddRange(new ToolStripItem[] { _tsmiMenuItemSettings, _tsmiMenuItemShowClock, _tsmiMenuItemEnable, _tssSeparator, _tsmiMenuItemExit });
+            _cmsTrayIconContextMenu.Items.AddRange(new ToolStripItem[] { _tsmiMenuItemAbout, new ToolStripSeparator(), _tsmiMenuItemSettings, _tsmiMenuItemShowClock, _tsmiMenuItemEnable, _tssSeparator, _tsmiMenuItemExit });
             _cmsTrayIconContextMenu.Name = "TrayIconContextMenu";
 
             _cmsTrayIconContextMenu.ResumeLayout(false);

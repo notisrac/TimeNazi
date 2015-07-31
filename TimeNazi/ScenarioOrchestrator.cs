@@ -267,7 +267,7 @@ namespace TimeNazi
                         _tsRestTimer = _getTimeSpan(RestTime);
                         //_startTimer();
                         _resetSnoozes();
-                        StartWork();
+                        //StartWork();
                         if (null != RestElapsed)
                         {
                             RestElapsed(this, new ElapsedEventArgs(_tsElapsedTime.TotalSeconds));

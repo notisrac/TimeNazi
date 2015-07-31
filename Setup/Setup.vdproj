@@ -172,12 +172,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3B1BC8547A9EFFF470DB7EC4E9B5778E"
-        "OwnerKey" = "8:_F1A84F0F24C64691374FA490B94D701B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3B1BC8547A9EFFF470DB7EC4E9B5778E"
         "OwnerKey" = "8:_E8F4EAA87FA44B3A97C3093B88C55C36"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -191,6 +185,12 @@
         {
         "MsmKey" = "8:_3B1BC8547A9EFFF470DB7EC4E9B5778E"
         "OwnerKey" = "8:_0B3DD17E8B68EA35F3AEB92CD7611E0A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B1BC8547A9EFFF470DB7EC4E9B5778E"
+        "OwnerKey" = "8:_F1A84F0F24C64691374FA490B94D701B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -748,42 +748,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_73EA8FFF7F32DDE43869769119E44862"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5B2EB2F3AF08D5899D7123ACEF135401"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B28DF161D3BCCF8C97A30AE7B46D7B11"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_841D08A44D00D8B292AD9BBA432864D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_590F2756575E9C321A07C7CAE47CDB25"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F1A84F0F24C64691374FA490B94D701B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E8F4EAA87FA44B3A97C3093B88C55C36"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -845,6 +809,36 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0FDECC80F462890A17761299B72225B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5B2EB2F3AF08D5899D7123ACEF135401"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B28DF161D3BCCF8C97A30AE7B46D7B11"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_841D08A44D00D8B292AD9BBA432864D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_590F2756575E9C321A07C7CAE47CDB25"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F1A84F0F24C64691374FA490B94D701B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1219,6 +1213,12 @@
         "OwnerKey" = "8:_90EF6FBEEE39DF6EA0D4217C7F7BE935"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_73EA8FFF7F32DDE43869769119E44862"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -1237,6 +1237,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -1253,6 +1261,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -2217,11 +2233,6 @@
             "AssemblyAsmDisplayName" = "8:nUtils.Crypto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_590F2756575E9C321A07C7CAE47CDB25"
-                    {
-                    "Name" = "8:nUtils.Crypto.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:nUtils.Crypto.dll"
             "TargetName" = "8:"
@@ -2248,11 +2259,6 @@
             "AssemblyAsmDisplayName" = "8:nUtils.WinForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5B2EB2F3AF08D5899D7123ACEF135401"
-                    {
-                    "Name" = "8:nUtils.WinForms.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:nUtils.WinForms.dll"
             "TargetName" = "8:"
@@ -2465,11 +2471,6 @@
             "AssemblyAsmDisplayName" = "8:CoreAudio, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_79578B4BC29E0E03EE268480CA105205"
-                    {
-                    "Name" = "8:CoreAudio.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CoreAudio.dll"
             "TargetName" = "8:"
@@ -2558,11 +2559,6 @@
             "AssemblyAsmDisplayName" = "8:nUtils.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_841D08A44D00D8B292AD9BBA432864D8"
-                    {
-                    "Name" = "8:nUtils.Graphics.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:nUtils.Graphics.dll"
             "TargetName" = "8:"
@@ -3147,11 +3143,6 @@
             "AssemblyAsmDisplayName" = "8:nUtils.Network, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B28DF161D3BCCF8C97A30AE7B46D7B11"
-                    {
-                    "Name" = "8:nUtils.Network.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:nUtils.Network.dll"
             "TargetName" = "8:"
@@ -3705,11 +3696,6 @@
             "AssemblyAsmDisplayName" = "8:GDataDB, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F1A84F0F24C64691374FA490B94D701B"
-                    {
-                    "Name" = "8:GDataDB.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:GDataDB.dll"
             "TargetName" = "8:"
@@ -3869,15 +3855,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TimeNazi"
-        "ProductCode" = "8:{AFE0C531-87E6-420D-9F3E-6C5D45D9E825}"
-        "PackageCode" = "8:{91CCCA23-040A-4DF9-B086-2F1F403ABABC}"
+        "ProductCode" = "8:{D68B610C-C0FE-4EA9-8138-3EE860139C94}"
+        "PackageCode" = "8:{4084933C-F471-4CF5-A760-A35FB12B0B67}"
         "UpgradeCode" = "8:{7813A993-20F5-40D8-A911-43F627B01E10}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Noti"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/notisrac/TimeNazi/issues"
@@ -4415,7 +4401,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E8F4EAA87FA44B3A97C3093B88C55C36"
             {
-            "SourcePath" = "8:..\\TimeNazi\\obj\\Debug\\TimeNazi.exe"
+            "SourcePath" = "8:..\\TimeNazi\\obj\\Release\\TimeNazi.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_53E4824550554CC79D4D2A4F76CD10DF"

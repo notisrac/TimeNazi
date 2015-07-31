@@ -89,6 +89,7 @@
       <HintPath>..\packages\NLog.4.0.1\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -120,6 +121,7 @@
     <Compile Include="ClockForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CustomSettingsProvider.cs" />
     <Compile Include="DBConfiguration.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationManager.cs" />

@@ -257,7 +257,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "TimeNazi";
-            this.TopMost = true;
+            //this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.pnlMainContent.ResumeLayout(false);
