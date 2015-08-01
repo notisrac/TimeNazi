@@ -123,7 +123,8 @@ namespace TimeNazi
                 return false;
             }
             _iActualNumberOfSnoozes--;
-            _tsBaseTime = _getTimeSpan(SnoozeTime);
+            //_tsBaseTime = _getTimeSpan(SnoozeTime);
+            _tsBaseTime = (_tsSnoozeTimer.TotalMilliseconds > 0) ? _tsSnoozeTimer : _getTimeSpan(SnoozeTime);
             CurrentState = States.Snooze;
             _startTimer();
 
@@ -153,6 +154,19 @@ namespace TimeNazi
             {
                 _stopTimer();
             }
+            else if (States.Snooze == CurrentState)
+            {
+                if (_tsSnoozeTimer.TotalSeconds > 61 && _tsRestTimer.TotalSeconds > 61)
+                {
+                    _iActualNumberOfSnoozes++;
+                }
+                Resume();
+                StartRest();
+                if (null != SnoozeElapsed)
+                { // TODO get real value
+                    SnoozeElapsed(this, new ElapsedEventArgs(0));
+                }
+            }
         }
 
         public void Resume()
@@ -166,7 +180,7 @@ namespace TimeNazi
             _bIsPaused = false;
             TimeSpan tsTotalTimeInPause = DateTime.Now - _dtPauseStartTime;
             if (tsTotalTimeInPause >= _getTimeSpan(PauseTime))
-            {
+            { // if the total time spent in pause is greater the the pausetime, then it should restart the work period, because it counts as a full rest period has elapsed
                 if (CurrentState == States.Working)
                 {
                     _tsWorkTimer = _getTimeSpan(WorkTime);
@@ -174,7 +188,7 @@ namespace TimeNazi
                 }
             }
             else
-            {
+            { // otherwise just continue working
                 if (CurrentState == States.Working)
                 {
                     StartWork();
@@ -185,10 +199,12 @@ namespace TimeNazi
 
         private void _startTimer()
         {
-            if (_bIsPaused)
-            {
-                return;
-            }
+            //if (_bIsPaused)
+            //{
+            //    logger.Trace("Trying to start timer, but pause is on");
+            //    return;
+            //}
+            logger.Trace("Starting timer");
             _dtTimerStartTime = DateTime.Now;
             _tTimer.Start();
         }
@@ -198,7 +214,7 @@ namespace TimeNazi
             _tTimer.Stop();
         }
 
-        private void _riseMinuteWarning()
+        private void _raiseMinuteWarning()
         {
             if (!_bMinuteWarningRaised && null != MinuteWarning)
             {
@@ -219,7 +235,7 @@ namespace TimeNazi
                     _tsWorkTimer = _tsBaseTime - _tsElapsedTime;
                     if (_tsWorkTimer < _getTimeSpan(1))
                     {
-                        _riseMinuteWarning();
+                        _raiseMinuteWarning();
                     }
                     if (_tsWorkTimer < TimeSpan.FromMilliseconds(1))
                     {
@@ -239,7 +255,7 @@ namespace TimeNazi
                     _tsSnoozeTimer = _tsBaseTime - _tsElapsedTime;
                     if (_tsSnoozeTimer < _getTimeSpan(1))
                     {
-                        _riseMinuteWarning();
+                        _raiseMinuteWarning();
                     }
                     // raise the apropriate event when a timer reached zero
                     if (_tsSnoozeTimer < TimeSpan.FromMilliseconds(1))
@@ -267,6 +283,7 @@ namespace TimeNazi
                         _tsRestTimer = _getTimeSpan(RestTime);
                         //_startTimer();
                         _resetSnoozes();
+                        _tsSnoozeTimer = _getTimeSpan(SnoozeTime);
                         //StartWork();
                         if (null != RestElapsed)
                         {
@@ -277,7 +294,7 @@ namespace TimeNazi
                 default:
                     break;
             }
-            logger.Trace("state: {4}, p: {7}, dT: {3:0}, _tsWorkTimer: {0:0}, _tsSnoozeTimer: {1:0} ({5}/{6}), _tsRestTimer: {2:0}", _tsWorkTimer.TotalSeconds, _tsSnoozeTimer.TotalSeconds, _tsRestTimer.TotalSeconds, _tsElapsedTime.TotalSeconds, CurrentState, NumberOfSnoozes, _iActualNumberOfSnoozes, _bIsPaused);
+            logger.Trace("state: {4}, pause: {7}, dT: {3:0}, _tsWorkTimer: {0:0}, _tsSnoozeTimer: {1:0} ({5}/{6}), _tsRestTimer: {2:0}", _tsWorkTimer.TotalSeconds, _tsSnoozeTimer.TotalSeconds, _tsRestTimer.TotalSeconds, _tsElapsedTime.TotalSeconds, CurrentState, NumberOfSnoozes, _iActualNumberOfSnoozes, _bIsPaused);
             if (null != Tick)
             {
                 Tick(this, new ElapsedEventArgs(_tsElapsedTime.TotalSeconds));

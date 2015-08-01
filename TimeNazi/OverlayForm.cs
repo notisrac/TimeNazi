@@ -86,9 +86,14 @@ namespace TimeNazi
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
+            //this.WindowState = FormWindowState.Maximized;
+#if !DEBUG
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+#endif
             this.BackgroundImage = _backgroundImage;
         }
 

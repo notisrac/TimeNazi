@@ -32,6 +32,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.lblWorking = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMute = new System.Windows.Forms.Button();
             this.btnRemoveBackdrop = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.tVisualsTimer = new System.Windows.Forms.Timer(this.components);
             this.tRealClockTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.lblWorking = new System.Windows.Forms.Label();
             this.pnlMainContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureBox)).BeginInit();
@@ -96,6 +96,17 @@
             this.pnlMainContent.Size = new System.Drawing.Size(388, 542);
             this.pnlMainContent.TabIndex = 4;
             this.pnlMainContent.SizeChanged += new System.EventHandler(this.pnlMainContent_SizeChanged);
+            // 
+            // lblWorking
+            // 
+            this.lblWorking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblWorking.AutoSize = true;
+            this.lblWorking.Location = new System.Drawing.Point(165, 523);
+            this.lblWorking.Name = "lblWorking";
+            this.lblWorking.Size = new System.Drawing.Size(56, 13);
+            this.lblWorking.TabIndex = 12;
+            this.lblWorking.Text = "Working...";
+            this.lblWorking.Visible = false;
             // 
             // pictureBox1
             // 
@@ -236,28 +247,16 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // lblWorking
-            // 
-            this.lblWorking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblWorking.AutoSize = true;
-            this.lblWorking.Location = new System.Drawing.Point(165, 523);
-            this.lblWorking.Name = "lblWorking";
-            this.lblWorking.Size = new System.Drawing.Size(56, 13);
-            this.lblWorking.TabIndex = 12;
-            this.lblWorking.Text = "Working...";
-            this.lblWorking.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1502, 796);
+            this.ClientSize = new System.Drawing.Size(600, 796);
             this.ControlBox = false;
             this.Controls.Add(this.pnlMainContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "TimeNazi";
-            //this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.pnlMainContent.ResumeLayout(false);
