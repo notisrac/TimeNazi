@@ -193,3 +193,24 @@
     color: #c0c0c0;
     letter-spacing: 0;
   }
+
+  .masthead-title img {
+    display: inline;
+    margin: 0rem;
+    border-radius: 0px;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    /*padding-top: 0.5rem;*/
+    border-radius: 5px;
+  }
+
+  .question{
+    display: list-item;
+    list-style-type: disc;
+    font-weight: bold;
+    color: #303030;
+  }

@@ -94,27 +94,27 @@
       <div style="post">
         <h2 id="faq" style="post-title">FAQ:</h2>
         <p>
-          <strong>How do I revoke the application's right to acces my google drive?</strong><br />
+          <span class="question">How do I revoke the application's right to acces my google drive?</span>
           On this <a href="https://security.google.com/settings/security/permissions" target="_blank">page</a>, select TimeNazi, and click "Remove".
         </p>
         <p>
-          <strong>Where does the application store the logs/activity/background images/config files on my machine?</strong><br />
+          <span class="question">Where does the application store the logs/activity/background images/config files on my machine?</span>
           Base directory: <code>C:\Users\&lt;username&gt;\AppData\Local\Noti\</code><br />
           ActivityLogs: <code>&lt;basedir&gt;\TimeNazi\ActivityLogs</code><br />
           Backgrounds: <code>&lt;basedir&gt;\TimeNazi\Backgrounds</code><br />
           Logs: <code>&lt;basedir&gt;\TimeNazi\Logs</code><br />
           Config: <br />
-          &nbsp;&nbsp;v1.0.0: <code>&lt;basedir&gt;\TimeNazi.exe.*\&lt;version&gt;\user.config</code><br />
+          &nbsp;&nbsp;v1.0.0: <code>&lt;basedir&gt;\TimeNazi.exe.*\&lt;version&gt;\user.config</code>
           &nbsp;&nbsp;v1.0.1+: <code>&lt;basedir&gt;\user.config</code>
         </p>
         <p>
-          <strong>How does the database work?</strong><br />
+          <span class="question">How does the database work?</span>
           The database is basically a spreadsheet in your google drive. It has two sheets (plus one, created by the lib):
           <ul>- <i>Config:</i> has only one row, and contains the configuration of the app</ul>
           <ul>- <i>ActivityLog:</i> every time something happens in the app, it gets inserted here</ul>
         </p>
         <p>
-          <strong>How does the application know what background files to download and from where?</strong><br />
+          <span class="question">How does the application know what background files to download and from where?</span>
           The background images are hosted in this GitHub page in a <a href="http://notisrac.github.io/TimeNazi/files.list">files.list</a> file. It contains the names and the MD5 hash of the files.
           The application has a key by the name of <code>BackgroundImagesSource</code> in it's config file. This key contains the link to the files.list file.
           When you press the "Check" button on the settings window's "Background images" section, it downloads and parses the files.list file.
@@ -125,8 +125,13 @@
           <ol>2. You always have to press the "Check" button prior to pressing the "Download" button. Also the app only downloads new and modified files.</ol>
         </p>
         <p>
-          <strong>How can I exit the application while on the rest screen?</strong><br />
+          <span class="question">How can I exit the application while on the rest screen?</span>
           Ctrl + Alt + Shift + F12
+        </p>
+        <p>
+          <span class="question">How can I delay the automatic start of the application?</span>
+          Modify the registry key <code>TimeNazi</code> in <code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code>, and add a space and the desired delay in <u>seconds</u>.<br />
+          <img src="images/screenshots/delayed_startup_registry_screenshot.png" alt="delayed startup" />
         </p>
       </div>
 
