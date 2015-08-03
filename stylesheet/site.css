@@ -106,6 +106,13 @@
     color: #9a9a9a;
   }
 
+  /* Meta data line below post title */
+  .post-date img {
+    display: inline;
+    margin: 0rem;
+    border-radius: 0px;
+  }
+
     /* Quotes */
   blockquote {
     padding: .5rem 1rem;
