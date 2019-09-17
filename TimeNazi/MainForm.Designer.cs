@@ -47,6 +47,7 @@
             this.tVisualsTimer = new System.Windows.Forms.Timer(this.components);
             this.tRealClockTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnPeek = new System.Windows.Forms.Button();
             this.pnlMainContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureBox)).BeginInit();
@@ -78,6 +79,7 @@
             // 
             this.pnlMainContent.BackColor = System.Drawing.SystemColors.Control;
             this.pnlMainContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMainContent.Controls.Add(this.btnPeek);
             this.pnlMainContent.Controls.Add(this.lblWorking);
             this.pnlMainContent.Controls.Add(this.pictureBox1);
             this.pnlMainContent.Controls.Add(this.btnMute);
@@ -247,16 +249,27 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // btnPeek
+            // 
+            this.btnPeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPeek.Location = new System.Drawing.Point(11, 477);
+            this.btnPeek.Name = "btnPeek";
+            this.btnPeek.Size = new System.Drawing.Size(50, 43);
+            this.btnPeek.TabIndex = 13;
+            this.btnPeek.Text = "Peek";
+            this.btnPeek.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 796);
+            this.ClientSize = new System.Drawing.Size(1421, 558);
             this.ControlBox = false;
             this.Controls.Add(this.pnlMainContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "TimeNazi";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.pnlMainContent.ResumeLayout(false);
@@ -287,6 +300,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label lblWorking;
+        private System.Windows.Forms.Button btnPeek;
     }
 }
 

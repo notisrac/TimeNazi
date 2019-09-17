@@ -58,6 +58,7 @@ namespace TimeNazi
         private ContextMenuStrip _cmsTrayIconContextMenu;
         private ToolStripMenuItem _tsmiMenuItemExit;
         private ToolStripMenuItem _tsmiMenuItemSettings;
+        private ToolStripMenuItem _tsmiMenuItemResetClockPos;
         private ToolStripSeparator _tssSeparator;
         private ToolStripMenuItem _tsmiMenuItemShowClock;
         private ToolStripMenuItem _tsmiMenuItemEnable;
@@ -236,6 +237,7 @@ namespace TimeNazi
         protected override void Dispose(bool disposing)
         {
             logger.Debug("disposing...");
+            mainForm.Close();
             SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
             SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
             SystemEvents.SessionEnded -= SystemEvents_SessionEnded;
@@ -459,6 +461,13 @@ namespace TimeNazi
                 _cmConfigManager.Save();
             }
         }
+        private void _resetClockPos()
+        {
+            System.Drawing.Point newPos = new System.Drawing.Point();
+            newPos.X = 0;
+            newPos.Y = 0;
+            clockForm.DesktopLocation = newPos;
+        }
 
         private void _showSettingsForm(bool isModal)
         {
@@ -560,18 +569,18 @@ namespace TimeNazi
         void _mfMainForm_SnoozeClicked(object sender, EventArgs e)
         {
             logger.Info(string.Format("snooze clicked, rest period suspended with {0}s elapsed", _lSOElapsedTime));
-            _logActivity(ActivityType.RestEnd, _lSOElapsedTime);
-            _logActivity(ActivityType.SnoozeBegin, 0);
             _soOrchestrator.StartSnooze();
             _scenarioWorking();
+            _logActivity(ActivityType.RestEnd, _lSOElapsedTime);
+            _logActivity(ActivityType.SnoozeBegin, 0);
         }
 
         void _mfMainForm_StartClicked(object sender, EventArgs e)
         { // when the start button is clicked, start the scenario
             logger.Debug("start work clicked");
-            _logActivity(ActivityType.WorkBegin, 0);
             _soOrchestrator.StartWork();
             _scenarioWorking();
+            _logActivity(ActivityType.WorkBegin, 0);
         }
 
         void _sfSettingsForm_ClockOpacityChanged(object sender, OpacityEventArgs e)
@@ -601,6 +610,10 @@ namespace TimeNazi
         void _tsmiMenuItemShowClock_CheckStateChanged(object sender, EventArgs e)
         {
             _changeClockVisibility(sender);
+        }
+        void _tsmiMenuItemResetClockPos_Click(object sender, EventArgs e)
+        {
+            _resetClockPos();
         }
 
         void _tsmiMenuItemSettings_Click(object sender, EventArgs e)
@@ -647,6 +660,11 @@ namespace TimeNazi
             //
             // MenuItemSettings
             //
+            _tsmiMenuItemResetClockPos = new ToolStripMenuItem();
+            _tsmiMenuItemResetClockPos.Name = "MenuItemSettings";
+            _tsmiMenuItemResetClockPos.Text = "Reset Clock Position";
+            _tsmiMenuItemResetClockPos.Click += _tsmiMenuItemResetClockPos_Click;
+
             _tsmiMenuItemSettings = new ToolStripMenuItem();
             _tsmiMenuItemSettings.Name = "MenuItemSettings";
             _tsmiMenuItemSettings.Text = "Settings";
@@ -681,7 +699,7 @@ namespace TimeNazi
             //
             // TrayIconContextMenu
             //
-            _cmsTrayIconContextMenu.Items.AddRange(new ToolStripItem[] { _tsmiMenuItemAbout, new ToolStripSeparator(), _tsmiMenuItemSettings, _tsmiMenuItemShowClock, _tsmiMenuItemEnable, _tssSeparator, _tsmiMenuItemExit });
+            _cmsTrayIconContextMenu.Items.AddRange(new ToolStripItem[] { _tsmiMenuItemAbout, new ToolStripSeparator(), _tsmiMenuItemResetClockPos, _tsmiMenuItemSettings, _tsmiMenuItemShowClock, _tsmiMenuItemEnable, _tssSeparator, _tsmiMenuItemExit });
             _cmsTrayIconContextMenu.Name = "TrayIconContextMenu";
 
             _cmsTrayIconContextMenu.ResumeLayout(false);

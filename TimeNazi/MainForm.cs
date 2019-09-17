@@ -265,6 +265,7 @@ namespace TimeNazi
             pbPictureBox.Visible = false;
             btnRefreshImage.Visible = false;
             btnSnooze.Visible = false;
+            btnPeek.Visible = false;
             btnStartWorkPeriod.Visible = true;
             lblClock.Visible = true;
             btnStartWorkPeriod.Focus();
@@ -288,6 +289,7 @@ namespace TimeNazi
             btnRefreshImage.Visible = true;
             btnSnooze.Visible = true;
             btnSnooze.Enabled = snoozeEnabled;
+            btnPeek.Visible = true;
             btnStartWorkPeriod.Visible = false;
             btnSettings.Visible = false;
             lblClock.Visible = true;
@@ -300,6 +302,7 @@ namespace TimeNazi
         {
             logger.Debug("ScenarioRestEnd()");
             btnSnooze.Visible = false;
+            btnPeek.Visible = false;
             lblClock.Visible = false;
             btnStartWorkPeriod.Text = "Resume working";
             btnStartWorkPeriod.Visible = true;
